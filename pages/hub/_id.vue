@@ -18,8 +18,8 @@
         </v-btn>
       </v-row>
       <Post
-        v-if="page"
-        :post="page"
+        v-if="blog"
+        :post="blog"
       />
       </v-row>
     </v-col>
@@ -47,26 +47,35 @@ export default {
     Post,
     GetInTouch
   },
+created(){
+      var slug = this.$route.params.id
+      this.$store.dispatch('getBlog',slug)
+    },
+   computed: {
+      blog(){
+        return this.$store.getters.getSelectedBlog
+      }
+  },
 //   contact:[],
-  async asyncData({ app, route, redirect }) {
-    try {
-        const {data} = await app.apolloProvider.defaultClient.query({
-                query: getPost,
-                variables: { 
-                    slug: route.params.id
-                },
-            }
-        )
-        console.log("data", data)
-        return {
-            page: data.getObject
-        }
+//   async asyncData({ app, route, redirect }) {
+//     try {
+//         const {data} = await app.apolloProvider.defaultClient.query({
+//                 query: getPost,
+//                 variables: { 
+//                     slug: route.params.id
+//                 },
+//             }
+//         )
+//         console.log("data", data)
+//         return {
+//             page: data.getObject
+//         }
 
-    }catch(error){
-        console.log("error", error);
-        redirect("/hub")
-    }
-  }
+//     }catch(error){
+//         console.log("error", error);
+//         redirect("/hub")
+//     }
+//   }
 //   async asyncData({ app, route, redirect }) {
 //     let data = {};
 //     try {

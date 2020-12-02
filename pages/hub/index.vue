@@ -25,12 +25,18 @@
           </v-chip>
         </v-col>
       </v-row> -->
-      <v-row class="mt-3 mb-5" v-if="getObjects">
+      <v-row class="mt-3 mb-5" v-if="blogs">
         <v-col
-          v-for="post in getObjects.objects" :key="post.title"
+          v-for="post in blogs" :key="post.id"
           cols="12"
           md="4"
         >
+          
+        <!-- <v-col
+          v-for="post in getObjects.objects" :key="post.title"
+          cols="12"
+          md="4"
+        > -->
           <PostCards
             :post="post"
             class="justify-center"
@@ -76,11 +82,16 @@ const bucket = api.bucket({
 });
 
 export default {
-  apollo: {
-    getObjects: {
-      prefetch: true,
-      query: getObjects,
-    },
+//   apollo: {
+//     getObjects: {
+//       prefetch: true,
+//       query: getObjects,
+//     },
+//   },
+   computed: {
+      blogs(){
+        return this.$store.getters.getBlog
+      }
   },
   name: "Hub",
   head: {
