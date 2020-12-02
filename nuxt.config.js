@@ -55,13 +55,18 @@ export default {
     '@nuxtjs/sitemap',
 
     "@nuxtjs/axios",
-    "@nuxtjs/apollo"
+    "@nuxtjs/apollo",
+    // '@nuxtjs/google-analytics',
   ],
 
   // GTM
   gtm: {
-    id: 'GTM-M5TFCP2'
+    id: 'GTM-M5TFCP2',
   },
+
+  // googleAnalytics: {
+  //   id: 'UA-XXX-X'
+  // }
 
   // Sitemap
   sitemap: {
@@ -106,7 +111,7 @@ export default {
           enforce: 'pre',
           test: /\.(js|vue)$/,
           loader: 'eslint-loader',
-          exclude: /(queries|node_modules)/
+          exclude: /(node_modules)/
         })
       }
     }
