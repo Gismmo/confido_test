@@ -15,7 +15,8 @@ $material-light: (
 
 @media only screen and (min-width: 960px) {
   .blog-900 {
-    max-width: 960px;
+    width:960px;
+    max-width: 100%;
   }
 }
 

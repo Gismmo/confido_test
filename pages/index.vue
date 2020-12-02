@@ -343,12 +343,10 @@ import GetInTouch from "../components/GetInTouch";
 
 let title = 'The Tech for Good talent partner',
     desc = 'Confido specialises in Product and Tech hiring for Seed to Series B Tech for Good starups. We connect people with the same values and a shared purpose to build a better future, together.',
-    url = 'https://confidotalent.com/about',
-    image = '/images/meta/home.png';
+    url = 'https://confidotalent.com';
 
 export default {
   scrollToTop: true,
-  name: "About",
   head: {
     title: title,
     meta: [
@@ -356,13 +354,11 @@ export default {
 
       { hid: 'og:title', property: 'og:title', content: title},
       { hid: 'og:url', property: 'og:url', content: url},
-      { hid: 'og:image', property: 'og:image', content: image},
       { hid: 'og:description', property: 'og:description', content: desc},
 
       { property: 'twitter:domain', content: url},
       { hid: 'twitter:title', property: 'twitter:title', content: title},
       { hid: 'twitter:description', property: 'twitter:description', content: desc},
-      { hid: 'twitter:image', property: 'twitter:image', content: image},
       { hid: 'twitter:url', property: 'twitter:url', content: url},
       { hid: 'twitter:label1', property: 'twitter:label1', content: title},  
     ], link: [ { rel: 'canonical', href: url} ]

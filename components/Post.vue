@@ -81,9 +81,9 @@ export default {
   },
   head() {
         let title = this?.post?.metadata?.seo_metatitle,
-        desc = "desc " + this?.post?.metadata?.seo_metadescription,
+        desc = this?.post?.metadata?.seo_metadescription,
         url = 'https://confidotalent.com/hub/' + this?.post?.slug,
-        image = this?.post?.metadata?.seo_metaimage;
+        image = this?.post?.metadata?.seo_metaimage?.url;
       return {
           title: title,
             meta: [

@@ -18,7 +18,7 @@ export default {
       { hid: 'description', name: 'description', content: "We scale Tech for Good startups. If you need to make critical Tech or Product hires, build core teams or scale up squads, we're here for you." },
 
       { hid: 'og:title', property: 'og:title', content: 'Make critical Tech or Product hires and scale your startup | Confido.'},
-      { hid: 'og:image', property: 'og:image', content: "/images/meta/home.png"},
+      { hid: 'og:image', property: 'og:image', content: "https://confidotalent.com/images/meta/home.png"},
       { hid: 'og:url', property: 'og:url', content: "https://confidotalent.com"},
       { hid: 'og:description', property: 'og:description', content: "We scale Tech for Good startups. If you need to make critical Tech or Product hires, build core teams or scale up squads, we're here for you."},
 
@@ -26,11 +26,14 @@ export default {
       { hid: 'twitter:title', property: 'twitter:title', content: 'Make critical Tech or Product hires and scale your startup | Confido.'},
       { hid: 'twitter:description', property: 'twitter:description', content: "We scale Tech for Good startups. If you need to make critical Tech or Product hires, build core teams or scale up squads, we're here for you."},
       { hid: 'twitter:url', property: 'twitter:url', content: "https://confidotalent.com"},
-      { hid: 'twitter:image', property: 'twitter:image', content: "/images/meta/home.png"},
+      { hid: 'twitter:image', property: 'twitter:image', content: "https://confidotalent.com/images/meta/home.png"},
       { hid: 'twitter:label1', property: 'twitter:label1', content: 'Make critical Tech or Product hires and scale your startup | Confido.'}
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'icon', type: 'image/png', size:'16x16', href: '/favicon-16x16.png' },
+      { rel: 'icon', type: 'image/png', size:'32x32', href: '/favicon-32x32.png' },
+      { rel: 'icon', type: 'image/png', size:'180x180', href: '/apple-touch-icon.png' },
+      { rel: 'manifest',  href: '/site.webmanifest' },
       { hid: 'canonical', rel: 'canonical', href: "https://confidotalent.com"}
     ]
   },
