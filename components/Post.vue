@@ -1,5 +1,5 @@
 <template>
-  <v-main class="blog-900 mt-0 pt-4">
+  <v-main class="blog-900 mt-0 pt-4" v-if="post">
     <v-img
       v-if="post.metadata"
       :src="post.metadata.hero.imgix_url"
@@ -24,6 +24,7 @@
         <v-chip
           class="tag px-4"
           color="secondary"
+          v-if="post.metadata"
         >
           <strong>{{ post.metadata.tag }}</strong>
         </v-chip>
@@ -31,6 +32,7 @@
       <v-col
         cols="6"
         md="2"
+        v-if="post.metadata"
       >
         <p class="ml-2 mt-1">
           {{ post.metadata.publicationdate }}
@@ -39,6 +41,7 @@
       <v-col
         cols="6"
         md="2"
+        v-if="post.metadata"
       >
         <p class="ml-2 mt-1">
           {{ post.metadata.author }}
@@ -47,6 +50,7 @@
       <v-col
         cols="6"
         md="2"
+        v-if="post.metadata"
       >
         <p class="ml-2 mt-1">
           {{ post.metadata.readtime }}
@@ -76,10 +80,10 @@ export default {
     }
   },
   head() {
-        let title = this.post.seo_metatitle,
-        desc = "desc " + this?.post?.seo_metadescription,
+        let title = this?.post?.metadata?.seo_metatitle,
+        desc = "desc " + this?.post?.metadata?.seo_metadescription,
         url = 'https://confidotalent.com/hub/' + this?.post?.slug,
-        image = this?.post?.seo_metaimage;
+        image = this?.post?.metadata?.seo_metaimage;
       return {
           title: title,
             meta: [

@@ -52,7 +52,10 @@ export default {
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
     '@nuxtjs/gtm',
-    '@nuxtjs/sitemap'
+    '@nuxtjs/sitemap',
+
+    "@nuxtjs/axios",
+    "@nuxtjs/apollo"
   ],
 
   // GTM
@@ -65,6 +68,18 @@ export default {
     hostname: 'https://confidotalent.com',
     gzip: true,
   },
+
+  //apollo
+  apollo: {
+    clientConfigs: {
+      default: {
+        httpEndpoint: "https://graphql.cosmicjs.com/v2"
+      }
+    }
+  },
+
+  // Axios module configuration (https://go.nuxtjs.dev/config-axios)
+  axios: {},
 
   // Vuetify module configuration (https://go.nuxtjs.dev/config-vuetify)
   vuetify: {
@@ -91,7 +106,7 @@ export default {
           enforce: 'pre',
           test: /\.(js|vue)$/,
           loader: 'eslint-loader',
-          exclude: /(node_modules)/
+          exclude: /(queries|node_modules)/
         })
       }
     }

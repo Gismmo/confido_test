@@ -1,5 +1,8 @@
 /* eslint-disable */
 <template>
+    <div
+        v-if="featured"
+    >
   <v-img
     :src="featured.metadata.hero.imgix_url"
     max-height="440"
@@ -30,7 +33,7 @@
             outlined
             color="white"
             rounded
-            :to="`/hub/featured/${featured.slug}`"
+            :to="`/hub/${featured.slug}`"
           >
             Read more
           </v-btn>
@@ -65,6 +68,7 @@
       </v-col>
     </v-row>
   </v-img>
+  </div>
 </template>
 
 <script>

@@ -1,10 +1,12 @@
 <template>
-  <v-row class="mx-4 mx-lg-16">
+<v-container>
+  <v-row class="mx-4 mx-lg-16 ">
     <v-col
       cols="12"
       md="12"
     >
-      <v-row class="text-left">
+      <v-row align="center" class="blog-900" style="margin:0px auto;">
+                <v-row>
         <v-btn 
           text
           to="/hub" 
@@ -16,56 +18,59 @@
         </v-btn>
       </v-row>
       <Post
-        v-if="post"
-        :post="post"
-        class="justify-center"
+        v-if="page"
+        :post="page"
       />
+      </v-row>
     </v-col>
   </v-row>
+    <v-row
+      id="getInTouch"
+      class="mx-0 mx-md-6 mx-lg-16 mb-12"
+    >
+      <v-col cols="12">
+        <GetInTouch :contact="contact" />
+      </v-col>
+    </v-row>
+</v-container>
 </template>
 
 <script>
 import Post from "../../components/Post";
+import GetInTouch from "../../components/GetInTouch";
 
-const Cosmic = require("cosmicjs");
-const api = Cosmic();
-// Set these values, found in Bucket > Settings after logging in at https://app.cosmicjs.com/login
-const bucket = api.bucket({
-  slug: "confido",
-  read_key: "0O6acZ2ATKQSdKr8rLb5b489Kxg4yNPQRvVii3KCL8T8atx3gn"
-});
+import getObject from "../../queries/getPost";
 
 export default {
   name: "PostView",
   components: {
     Post
   },
-  data() {
-    return {
-      loading: false,
-      post: {},
-      slug: ""
-    };
-  },
-  created() {
-    this.slug = this.$route.params.id;
-    this.fetchData();
-  },
-  methods: {
-    fetchData() {
-      this.error = this.post = null;
-      this.loading = true;
-      bucket
-        .getObject({
-          slug: this.slug
-        })
-        .then(data => {
-          // console.log(data);
-          this.post = data.object;
-          this.loading = false;
-          // this.posts = posts;
-        });
+  contact:[],
+  async asyncData({ app, route, redirect }) {
+    let data = {};
+    try {
+      const d = await app.apolloProvider.defaultClient.query({
+        query: getObject,
+        variables: { slug: route.params.id },
+      });
+      const data = d.data;
+      console.log("data", data);
+      return {
+        page: data.getObject,
+      };
+    } catch (error) {
+      console.log("error", error);
+    //   redirect("/hub");
     }
-  }
+  },
+  mounted() {
+    console.log(this.myRoute);
+  },
+  computed: {
+    myRoute() {
+      return this.$route.params.id;
+    },
+  },
 };
 </script>
