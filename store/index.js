@@ -1,37 +1,37 @@
 import Vuex from 'vuex'
 import Vue from 'vue'
 import Request from '~/common/request'
-import _ from 'lodash'
+// import _ from 'lodash'
 // import VeeValidate from 'vee-validate'
 // Vue.use(VeeValidate)
-function mapPages(pages) {
-  var response = {};
-  pages.map((page) => {
-    switch(page.slug){
-    //   case 'faqs':
-    //     response.faqs = {};
-    //     response.faqs.title = 'FAQs'
-    //     page.metafields.map((obj) => {
-    //       response.faqs[obj.key] = obj.children
-    //     });
-    //     break;
-      case 'hub':
-        response.blog = page;
-        break;
-    //   case 'home':
-    //     response.home = {};
-    //     page.metafields.map((obj) => {
-    //       if(obj.key == 'carousel' || obj.key == 'blurbs'){
-    //         response.home[obj.key] = obj.children
-    //       }
-    //       else
-    //         response.home[obj.key] = obj;
-    //     });
-    //     break;
-    }
-  })
-  return response;
-}
+// function mapPages(pages) {
+//   var response = {};
+//   pages.map((page) => {
+//     switch(page.slug){
+//     //   case 'faqs':
+//     //     response.faqs = {};
+//     //     response.faqs.title = 'FAQs'
+//     //     page.metafields.map((obj) => {
+//     //       response.faqs[obj.key] = obj.children
+//     //     });
+//     //     break;
+//       case 'hub':
+//         response.blog = page;
+//         break;
+//     //   case 'home':
+//     //     response.home = {};
+//     //     page.metafields.map((obj) => {
+//     //       if(obj.key == 'carousel' || obj.key == 'blurbs'){
+//     //         response.home[obj.key] = obj.children
+//     //       }
+//     //       else
+//     //         response.home[obj.key] = obj;
+//     //     });
+//     //     break;
+//     }
+//   })
+//   return response;
+// }
 
 // function mapGlobals(globals){
 //   var response = {};

@@ -18,8 +18,8 @@
         </v-btn>
       </v-row>
       <Post
-        v-if="blog"
-        :post="blog"
+        v-if="page"
+        :post="page"
       />
       </v-row>
     </v-col>
@@ -47,59 +47,40 @@ export default {
     Post,
     GetInTouch
   },
-created(){
-      var slug = this.$route.params.id
-      this.$store.dispatch('getBlog',slug)
-    },
-   computed: {
-      blog(){
-        return this.$store.getters.getSelectedBlog
-      }
-  },
-//   contact:[],
-//   async asyncData({ app, route, redirect }) {
-//     try {
-//         const {data} = await app.apolloProvider.defaultClient.query({
-//                 query: getPost,
-//                 variables: { 
-//                     slug: route.params.id
-//                 },
-//             }
-//         )
-//         console.log("data", data)
-//         return {
-//             page: data.getObject
-//         }
-
-//     }catch(error){
-//         console.log("error", error);
-//         redirect("/hub")
-//     }
-//   }
-//   async asyncData({ app, route, redirect }) {
-//     let data = {};
-//     try {
-//       const d = await app.apolloProvider.defaultClient.query({
-//         query: getObject,
-//         variables: { slug: route.params.id },
-//       });
-//       const data = d.data;
-//       console.log("data", data);
-//       return {
-//         page: data.getObject,
-//       };
-//     } catch (error) {
-//       console.log("error", error);
-//     //   redirect("/hub");
-//     }
-//   },
-//   mounted() {
-//     console.log(this.myRoute);
-//   },
-//   computed: {
-//     myRoute() {
-//       return this.$route.params.id;
+// created(){
+//       var slug = this.$route.params.id
+//       this.$store.dispatch('getBlog',slug)
 //     },
+//    computed: {
+//       blog(){
+//         return this.$store.getters.getSelectedBlog
+//       }
 //   },
+//   contact:[],
+  async asyncData({ app, route, redirect }) {
+    let data = {};
+    try {
+      const d = await app.apolloProvider.defaultClient.query({
+        query: getPost,
+        variables: { slug: route.params.id },
+      });
+      const data = d.data;
+    //   console.log("data", data);
+      return {
+        page: data.getObject,
+      };
+    } catch (error) {
+      console.log("error", error);
+      redirect("/hub");
+    }
+  },
+  mounted() {
+    console.log(this.myRoute);
+  },
+  computed: {
+    myRoute() {
+      return this.$route.params.id;
+    },
+  },
 };
 </script>
