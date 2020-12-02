@@ -62,7 +62,7 @@ export default {
 
     "@nuxtjs/axios",
     "@nuxtjs/apollo",
-    // '@nuxtjs/google-analytics',
+    '@nuxtjs/google-analytics',
   ],
 
   // GTM
@@ -70,9 +70,9 @@ export default {
     id: 'GTM-M5TFCP2',
   },
 
-  // googleAnalytics: {
-  //   id: 'UA-XXX-X'
-  // }
+  googleAnalytics: {
+    id: 'UA-117426148-1'
+  },
 
   // Sitemap
   sitemap: {
@@ -88,6 +88,11 @@ export default {
       }
     }
   },
+
+  // serverMiddleware
+  serverMiddleware: [
+    '~/servermiddleware/seo.js'
+  ],
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
   axios: {

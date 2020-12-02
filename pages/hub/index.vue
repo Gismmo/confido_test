@@ -70,7 +70,7 @@ import getObjects from "../../queries/getObjects";
 let title = 'Hub',
     desc = "Our knowledge hub is a one-stop shop for all things Tech for Good. Explore our hub to find Founder stories and the latest news on Tech and Product hiring.",
     url = 'https://confidotalent.com/hub',
-    image = '/images/meta/home.png';
+    image = 'https://confidotalent.com/images/meta/home.png';
 
 // HACK -> To get Featured posts
 const Cosmic = require("cosmicjs");

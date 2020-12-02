@@ -483,7 +483,7 @@ import ColorWideCard from "../components/ColorWideCard";
 let title = 'Work with people who share your values and build better tech',
     desc = 'We’ll connect you with a startup that alligns with your values so you can build products that make the world a better place. Get in touch to talk about Tech and Product roles.',
     url = 'https://confidotalent.com/talent',
-    image = '/images/meta/home.png';
+    image = 'https://confidotalent.com/images/meta/home.png';
 
 export default {
   scrollToTop: true,

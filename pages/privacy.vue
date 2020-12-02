@@ -433,7 +433,7 @@
 let title = 'Make critical Tech or Product hires and scale your startup',
     desc = "We scale Tech for Good startups. If you need to make critical Tech or Product hires, build core teams or scale up squads, we're here for you.",
     url = 'https://confidotalent.com/privacy',
-    image = '/images/meta/home.png';
+    image = 'https://confidotalent.com/images/meta/home.png';
 
 export default {
   scrollToTop: true,
