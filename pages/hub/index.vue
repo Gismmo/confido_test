@@ -3,7 +3,7 @@
     fluid
     class="pa-0 ma-0"
   >
-    <!-- <v-row
+    <v-row
       class="text-left"
       no-gutters
       v-if="featuredposts"
@@ -16,7 +16,7 @@
       >
         <FeaturedPost :featured="featured" />
       </v-col>
-    </v-row> -->
+    </v-row>
     <section class="ma-4 ma-lg-16">
       <!-- <v-row class="my-4">
         <v-col cols="6" md="2" v-for="post in posts" :key="post._id">
@@ -56,7 +56,7 @@
 
 <script>
 import PostCards from "../../components/PostCards";
-// import FeaturedPost from "../../components/FeaturedPost";
+import FeaturedPost from "../../components/FeaturedPost";
 import GetInTouch from "../../components/GetInTouch";
 
 import getObjects from "../../queries/getObjects";
@@ -67,13 +67,13 @@ let title = 'Hub',
     image = '/images/meta/home.png';
 
 // HACK -> To get Featured posts
-// const Cosmic = require("cosmicjs");
-// const api = Cosmic();
-// // Set these values, found in Bucket > Settings after logging in at https://app.cosmicjs.com/login
-// const bucket = api.bucket({
-//   slug: "confido",
-//   read_key: "0O6acZ2ATKQSdKr8rLb5b489Kxg4yNPQRvVii3KCL8T8atx3gn"
-// });
+const Cosmic = require("cosmicjs");
+const api = Cosmic();
+// Set these values, found in Bucket > Settings after logging in at https://app.cosmicjs.com/login
+const bucket = api.bucket({
+  slug: "confido",
+  read_key: "0O6acZ2ATKQSdKr8rLb5b489Kxg4yNPQRvVii3KCL8T8atx3gn"
+});
 
 export default {
   apollo: {
@@ -104,34 +104,34 @@ export default {
   contact: [],
   components: {
     PostCards,
-    // FeaturedPost,
+    FeaturedPost,
     GetInTouch
   },
-//   data() {
-//     return {
-//       loading: false,
-//       contact: [],
-//       featuredposts: {}
-//     };
-//   },
-//   created() {
-//     this.fetchFeaturedData();
-//   },
-//   methods: {
-//     fetchFeaturedData() {
-//       this.error = this.featuredposts = null;
-//       this.loading = true;
-//       bucket
-//         .getObjects({
-//           type: "featuredposts",
-//           props: "_id,slug,title,content,metadata"
-//         })
-//         .then(data => {
-//           const featuredposts = data.objects;
-//           this.loading = false;
-//           this.featuredposts = featuredposts;
-//         });
-//     }
-//   }
+  data() {
+    return {
+      loading: false,
+      contact: [],
+      featuredposts: {}
+    };
+  },
+  created() {
+    this.fetchFeaturedData();
+  },
+  methods: {
+    fetchFeaturedData() {
+      this.error = this.featuredposts = null;
+      this.loading = true;
+      bucket
+        .getObjects({
+          type: "featuredposts",
+          props: "_id,slug,title,content,metadata"
+        })
+        .then(data => {
+          const featuredposts = data.objects;
+          this.loading = false;
+          this.featuredposts = featuredposts;
+        });
+    }
+  }
 };
 </script>

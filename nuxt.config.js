@@ -1,4 +1,7 @@
 import colors from 'vuetify/es5/util/colors'
+import axios from 'axios'
+// import getObjects from './queries/getObjects'
+// import ApolloClient from "apollo-boost";
 
 export default {
   // Target (https://go.nuxtjs.dev/config-target)
@@ -84,7 +87,9 @@ export default {
   },
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
-  axios: {},
+  axios: {
+    baseURL: "https://graphql.cosmicjs.com/v2"
+  },
 
   // Vuetify module configuration (https://go.nuxtjs.dev/config-vuetify)
   vuetify: {
@@ -114,6 +119,43 @@ export default {
           exclude: /(node_modules)/
         })
       }
+    }
+  },
+
+  // Generate manual pages
+  generate: {
+    routes() {
+
+
+      // app.apolloProvider.defaultClient.query({
+      //   query: getObject,
+      //   variables: { slug: route.params.id },
+      // });
+
+      return axios.get('https://graphql.cosmicjs.com/v2',{
+        query: `{
+          getObjects(
+            bucket_slug: "confido"
+            input: 
+              { limit: 50, read_key: "0O6acZ2ATKQSdKr8rLb5b489Kxg4yNPQRvVii3KCL8T8atx3gn", type: "posts" }
+          ) {
+            objects {
+              _id
+              slug
+              title
+              content
+              metadata
+            }
+          }
+        }`,
+      }).then(res => {
+        console.log(res);
+        const objects = res.data.getObjects
+        return objects.map(post => {
+          console.log(post)
+          return '/hub/' + post.slug
+        })
+      })
     }
   }
 }

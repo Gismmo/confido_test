@@ -29,7 +29,7 @@
       class="mx-0 mx-md-6 mx-lg-16 mb-12"
     >
       <v-col cols="12">
-        <GetInTouch :contact="contact" />
+        <GetInTouch  />
       </v-col>
     </v-row>
 </v-container>
@@ -39,38 +39,58 @@
 import Post from "../../components/Post";
 import GetInTouch from "../../components/GetInTouch";
 
-import getObject from "../../queries/getPost";
+import getPost from "../../queries/getPost";
 
 export default {
   name: "PostView",
   components: {
-    Post
+    Post,
+    GetInTouch
   },
-  contact:[],
+//   contact:[],
   async asyncData({ app, route, redirect }) {
-    let data = {};
     try {
-      const d = await app.apolloProvider.defaultClient.query({
-        query: getObject,
-        variables: { slug: route.params.id },
-      });
-      const data = d.data;
-      console.log("data", data);
-      return {
-        page: data.getObject,
-      };
-    } catch (error) {
-      console.log("error", error);
-    //   redirect("/hub");
+        const {data} = await app.apolloProvider.defaultClient.query({
+                query: getPost,
+                variables: { 
+                    slug: route.params.id
+                },
+            }
+        )
+        console.log("data", data)
+        return {
+            page: data.getObject
+        }
+
+    }catch(error){
+        console.log("error", error);
+        redirect("/hub")
     }
-  },
-  mounted() {
-    console.log(this.myRoute);
-  },
-  computed: {
-    myRoute() {
-      return this.$route.params.id;
-    },
-  },
+  }
+//   async asyncData({ app, route, redirect }) {
+//     let data = {};
+//     try {
+//       const d = await app.apolloProvider.defaultClient.query({
+//         query: getObject,
+//         variables: { slug: route.params.id },
+//       });
+//       const data = d.data;
+//       console.log("data", data);
+//       return {
+//         page: data.getObject,
+//       };
+//     } catch (error) {
+//       console.log("error", error);
+//     //   redirect("/hub");
+//     }
+//   },
+//   mounted() {
+//     console.log(this.myRoute);
+//   },
+//   computed: {
+//     myRoute() {
+//       return this.$route.params.id;
+//     },
+//   },
 };
 </script>

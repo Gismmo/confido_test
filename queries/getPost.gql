@@ -1,4 +1,4 @@
-query getObject($slug: String!){
+query getPost($slug: String!){
   getObject(bucket_slug: "confido", input: {
     slug: $slug,
     read_key: "0O6acZ2ATKQSdKr8rLb5b489Kxg4yNPQRvVii3KCL8T8atx3gn"
